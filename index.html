@@ -802,3 +802,90 @@
             </ul>
         </div>
     </div>
+    <!-- 12. РЕАЛЬНЫЕ ПРИЗЫ И НАГРАДЫ -->
+    <div id="prizes" class="section">
+        <h2>12. 🎁 РЕАЛЬНЫЕ ПРИЗЫ И НАГРАДЫ</h2>
+        <p style="margin-bottom: 20px;">Участники Космической Академии могут получать <strong>реальные физические и денежные призы</strong> за достижения в игре.</p>
+        
+        <h3>💰 Денежные призы (вывод на карту)</h3>
+        <ul style="margin-left: 20px; margin-bottom: 25px;">
+            <li><strong>1000 рублей</strong> — за первое место в ежемесячном турнире</li>
+            <li><strong>500 рублей</strong> — за второе место в ежемесячном турнире</li>
+            <li><strong>300 рублей</strong> — за третье место в ежемесячном турнире</li>
+            <li><strong>100 рублей</strong> — за попадание в топ-10 недельного рейтинга</li>
+            <li><strong>50 рублей</strong> — за выполнение ежедневного челленджа 30 дней подряд</li>
+            <li><strong>2000 рублей</strong> — за прохождение секретного босс-уровня (разовый приз)</li>
+        </ul>
+        
+        <h3>🎁 Физические призы (отправка по почте)</h3>
+        <ul style="margin-left: 20px; margin-bottom: 25px;">
+            <li><strong>Фирменная толстовка «Космическая Академия»</strong> — за 100% прохождение Меха-Сити</li>
+            <li><strong>Брелок-шестерёнка (металлический)</strong> — за достижение ранга «Инженер»</li>
+            <li><strong>Набор наклеек с роботами</strong> — за открытие 10 секретов</li>
+            <li><strong>Мягкая игрушка «Робот Клик»</strong> — за первое место в годовом турнире</li>
+            <li><strong>Диплом и медаль «Мастер Меха-Сити»</strong> — за полное прохождение планеты</li>
+            <li><strong>Магнит на холодильник «Шестерёнка»</strong> — за выполнение 50 ежедневных заданий</li>
+        </ul>
+        
+        <h3>⚙️ Как это работает</h3>
+        <ul style="margin-left: 20px; margin-bottom: 25px;">
+            <li>Автоматическое начисление призов при выполнении условий</li>
+            <li>Запрос реквизитов для денежных призов (карта российского банка)</li>
+            <li>Запрос адреса для физических призов (только по РФ)</li>
+            <li>Отправка призов в течение 30 дней после подтверждения</li>
+            <li>Для получения призов необходима активная подписка Premium или Family</li>
+        </ul>
+        
+        <h3>🤝 Партнёры</h3>
+        <ul style="margin-left: 20px;">
+            <li><strong>Оzon</strong> — предоставление подарочных сертификатов</li>
+            <li><strong>Детский мир</strong> — игрушки и настольные игры</li>
+            <li><strong>Яндекс.Деньги</strong> — обработка денежных выплат</li>
+        </ul>
+        
+        <div style="background: rgba(0, 196, 140, 0.1); border: 1px solid #00C48C; border-radius: 20px; padding: 15px; margin-top: 25px;">
+            <p style="color: #00C48C; font-weight: bold;">📌 Важные условия:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Денежные призы доступны только для подписчиков Premium и Family</li>
+                <li>Минимальная сумма для вывода — 500 рублей</li>
+                <li>Физические призы отправляются только по России</li>
+                <li>Призы не подлежат обмену на деньги или другие товары</li>
+                <li>Организатор оставляет право заменить приз на равноценный</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Футер -->
+    <div class="footer">
+        © 2026 Космическая Академия (Kids Odyssey) | Документация проекта версия 4.0<br>
+        Планета Меха-Сити: 60-80 часов геймплея, 80+ активностей, 27 персонажей, еженедельные ивенты.
+    </div>
+</div>
+
+<button class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+    // Показать/скрыть кнопку наверх
+    window.addEventListener('scroll', function() {
+        var btn = document.querySelector('.to-top');
+        if (window.scrollY > 400) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+
+    // Плавная прокрутка для навигации
+    document.querySelectorAll('.nav-links a').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            var targetId = this.getAttribute('href').substring(1);
+            var target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
