@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космическая Академия — Полная документация проекта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1A1F3D 100%);
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Анимации */
+        @keyframes neonPulse {
+            0% { text-shadow: 0 0 5px rgba(0, 210, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 210, 255, 0.8), 0 0 30px rgba(0, 210, 255, 0.4); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(108, 99, 255, 0.3); }
+            100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.6); }
+        }
+
+        /* Общие стили */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Хедер */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.2) 0%, rgba(255, 101, 132, 0.2) 100%);
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "🚀";
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.03;
+            bottom: -50px;
+            right: -50px;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #B0B7D6;
+            margin-bottom: 10px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.2);
+            border: 1px solid #00D2FF;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* Навигация */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links a {
+            color: #B0B7D6;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #00D2FF;
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        /* Оглавление */
+        .toc {
+            background: rgba(26, 31, 61, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #00D2FF;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .toc-item {
+            background: rgba(15, 20, 45, 0.6);
+            padding: 12px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .toc-item:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: #00D2FF;
+            transform: translateX(5px);
+        }
+
+        .toc-item a {
+            color: #FFFFFF;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Секции */
+        .section {
+            background: rgba(26, 31, 61, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            animation: fadeIn 0.5s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(0, 210, 255, 0.5);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        .section h2 {
+            color: #00D2FF;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 210, 255, 0.3);
+        }
+
+        .section h3 {
+            color: #FF007A;
+            font-size: 1.4rem;
+            margin: 20px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #FFB347;
+            font-size: 1.2rem;
+            margin: 15px 0 10px 0;
+        }
+
+        /* Таблицы */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(10, 14, 39, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        th {
+            background: rgba(0, 210, 255, 0.15);
+            color: #00D2FF;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        /* Карта города */
+        .city-map {
+            background: #0D111A;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #00D2FF;
+        }
+
+        .city-map pre {
+            color: #00D2FF;
+            margin: 0;
+            white-space: pre;
+        }
+
+        /* Прогресс-бар */
+        .progress-bar {
+            background: #2D3561;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00D2FF, #7000FF);
+            width: 35%;
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Ранги */
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .rank-card {
+            background: linear-gradient(135deg, #151E2E, #0D111A);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .rank-card:hover {
+            transform: translateY(-5px);
+            border-color: #00D2FF;
+        }
+
+        .rank-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFB347;
+        }
+
+        .rank-title {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #00D2FF;
+        }
+
+        /* Персонажи */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .character-card {
+            background: linear-gradient(135deg, #151E2E, #0D111A);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 0, 122, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF007A;
+            box-shadow: 0 0 15px rgba(255, 0, 122, 0.2);
+        }
+
+        .character-name {
+            font-size: 1.3rem;
+            color: #FF007A;
+            margin-bottom: 10px;
+        }
+
+        .character-role {
+            color: #B0B7D6;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Цены */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #151E2E, #0D111A);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #6C63FF;
+            box-shadow: 0 0 15px rgba(108, 99, 255, 0.2);
+        }
+
+        .pricing-price {
+            font-size: 1.8rem;
+            color: #FFB347;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .pricing-features li {
+            padding: 5px 0;
+            color: #B0B7D6;
+        }
+
+        /* Вкладки */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #B0B7D6;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(0, 210, 255, 0.1);
+            color: #00D2FF;
+        }
+
+        .tab-btn.active {
+            background: rgba(0, 210, 255, 0.2);
+            color: #00D2FF;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Спойлеры */
+        details {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(10, 14, 39, 0.5);
+            border-radius: 10px;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #00D2FF;
+            font-weight: bold;
+        }
+
+        summary:hover {
+            color: #FF007A;
+        }
+
+        /* Кнопка наверх */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #6C63FF, #FF6584);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 24px;
+            color: white;
+            z-index: 1000;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+
+        /* Футер */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(0, 210, 255, 0.2);
+            margin-top: 40px;
+            color: #B0B7D6;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.4rem;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media print {
+            .nav-bar, .scroll-top, .toc {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .section {
+                background: white;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+            
+            .section h2 {
+                color: #333;
+            }
+            
+            .character-card, .rank-card, .pricing-card {
+                background: #f5f5f5;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигационная панель -->
+    <div class="nav-bar">
+        <ul class="nav-links">
+            <li><a href="#info">Общее</a></li>
+            <li><a href="#age">Возраст</a></li>
+            <li><a href="#planet">Планета</a></li>
+            <li><a href="#activities">Активности</a></li>
+            <li><a href="#characters">Персонажи</a></li>
+            <li><a href="#coop">Кооператив</a></li>
+            <li><a href="#business">Бизнес</a></li>
+            <li><a href="#legal">Юридические</a></li>
+            <li><a href="#tech">Технологии</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <!-- Хедер -->
+        <div class="header">
+            <h1>🚀 КОСМИЧЕСКАЯ АКАДЕМИЯ</h1>
+            <div class="subtitle">KIDS ODYSSEY — ПОЛНАЯ ДОКУМЕНТАЦИЯ ПРОЕКТА</div>
+            <div class="version-badge">Версия 3.0 | 26 мая 2026 г.</div>
+        </div>
+
+        <!-- Оглавление -->
+        <div class="toc">
+            <h2>📋 ОГЛАВЛЕНИЕ</h2>
+            <div class="toc-grid">
+                <div class="toc-item"><a href="#info">1. Общая информация</a></div>
+                <div class="toc-item"><a href="#age">2. Кросс-возрастная концепция</a></div>
+                <div class="toc-item"><a href="#planet">3. Планета Меха-Сити</a></div>
+                <div class="toc-item"><a href="#activities">4. Активности планеты (80+)</a></div>
+                <div class="toc-item"><a href="#characters">5. Персонажи (27)</a></div>
+                <div class="toc-item"><a href="#coop">6. Кооперативные уровни</a></div>
+                <div class="toc-item"><a href="#business">7. Бизнес-модель</a></div>
+                <div class="toc-item"><a href="#legal">8. Юридические аспекты</a></div>
+                <div class="toc-item"><a href="#tech">9. Техническая архитектура</a></div>
+                <div class="toc-item"><a href="#roadmap">10. План развития</a></div>
+            </div>
+        </div>
+
+        <!-- 1. Общая информация -->
+        <div id="info" class="section">
+            <h2>1. 🚀 ОБЩАЯ ИНФОРМАЦИЯ О ПРОЕКТЕ</h2>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Параметр</th><th>Значение</th></tr>
+                    <tr><td>Название проекта</td><td>Космическая Академия (Kids Odyssey)</td></tr>
+                    <tr><td>Тип продукта</td><td>Образовательно-развлекательная платформа для всей семьи</td></tr>
+                    <tr><td>Целевая аудитория</td><td>Дети (4–12 лет), подростки (13–17 лет), взрослые (18+), семьи</td></tr>
+                    <tr><td>Платформа</td><td>Веб-приложение (браузер + PWA)</td></tr>
+                    <tr><td>Модель монетизации</td><td>Freemium + ежемесячная подписка + семейный тариф</td></tr>
+                    <tr><td>Время прохождения 1-й планеты (дети)</td><td>60–80 часов</td></tr>
+                    <tr><td>Время прохождения 1-й планеты (взрослые)</td><td>20–30 часов</td></tr>
+                    <tr><td>Количество активностей</td><td>80+ (адаптируются под возраст)</td></tr>
+                    <tr><td>Персонажей</td><td>27 (10 друзей, 8 врагов, 6 нейтральных, 3 босса)</td></tr>
+                    <tr><td>Коллекционных предметов</td><td>70+</td></tr>
+                </table>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="text-align: center; color: #B0B7D6;">Текущий прогресс разработки: 35%</p>
+        </div>
+
+        <!-- 2. Кросс-возрастная концепция -->
+        <div id="age" class="section">
+            <h2>2. 👨‍👩‍👧‍👦 КРОСС-ВОЗРАСТНАЯ КОНЦЕПЦИЯ</h2>
+            
+            <h3>Возрастные роли и режимы</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Возраст</th><th>Роль</th><th>Основной режим</th><th>Сложность</th></tr>
+                    <tr><td>4–6 лет</td><td>Исследователь</td><td>Игры на внимание, память</td><td>Минимальная</td></tr>
+                    <tr><td>7–9 лет</td><td>Ученик</td><td>Полный набор активностей</td><td>Средняя</td></tr>
+                    <tr><td>10–12 лет</td><td>Инженер</td><td>Сложные головоломки</td><td>Высокая</td></tr>
+                    <tr><td>13–17 лет</td><td>Разработчик</td><td>Создание своих уровней</td><td>Эксперт</td></tr>
+                    <tr><td>18+</td><td>Архитектор</td><td>Стратегический режим</td><td>Стратегическая</td></tr>
+                </table>
+            </div>
+
+            <h3>Адаптация контента под возраст</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Элемент</th><th>Дети (4–9)</th><th>Подростки (10–17)</th><th>Взрослые (18+)</th></tr>
+                    <tr><td>Сложность заданий</td><td>Низкая</td><td>Средняя</td><td>Высокая</td></tr>
+                    <tr><td>Таймер</td><td>Отсутствует</td><td>30–60 секунд</td><td>15–20 секунд</td></tr>
+                    <tr><td>Подсказки</td><td>Всегда доступны</td><td>1–2 за уровень</td><td>Нет</td></tr>
+                    <tr><td>UI интерфейс</td><td>Игровой, яркий</td><td>Минималистичный</td><td>Аналитический</td></tr>
+                </table>
+            </div>
+
+            <details>
+                <summary>👪 Семейная синхронизация (подробнее)</summary>
+                <p style="margin-top: 15px;">Все члены семьи играют на одной планете, но видят разные версии заданий. Прогресс синхронизируется через семейную группу. Общий счёт, коллекции и секреты — единые для всей семьи.</p>
+            </details>
+        </div>
+
+        <!-- 3. Планета Меха-Сити -->
+        <div id="planet" class="section">
+            <h2>3. 🌍 ПЛАНЕТА МЕХА-СИТИ</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Параметр</th><th>Значение</th></tr>
+                    <tr><td>Название</td><td>Меха-Сити (Mecha City)</td></tr>
+                    <tr><td>Стиль</td><td>Киберпанк / Неон / Роботы</td></tr>
+                    <tr><td>Основной цвет</td><td><span style="background:#00D2FF; padding:2px 8px; border-radius:5px;">#00D2FF</span> (неон голубой)</td></tr>
+                    <tr><td>Акцентный цвет</td><td><span style="background:#FF007A; padding:2px 8px; border-radius:5px;">#FF007A</span> (неон розовый)</td></tr>
+                    <tr><td>Хранитель планеты</td><td>Робот «Клик»</td></tr>
+                    <tr><td>Целевое время (дети)</td><td>60–80 часов</td></tr>
+                    <tr><td>Целевое время (взрослые)</td><td>20–30 часов</td></tr>
+                    <tr><td>Количество активностей</td><td>80+</td></tr>
+                    <tr><td>Количество рангов</td><td>10</td></tr>
+                </table>
+            </div>
+
+            <h3>Карта города</h3>
+            <div class="city-map">
+                <pre>
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              🏙️ МЕХА-СИТИ - КАРТА ГОРОДА 🏙️                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                          СЕВЕРНЫЙ РАЙОН                              │    │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │    │
+│  │  │   🏭 ЗАВОД   │  │   🔧 ЦЕНТР   │  │   🔬 ЛАБОРА-  │  │   🎓     │ │    │
+│  │  │  АЛГОРИТМОВ  │  │    СХЕМ     │  │   ТОРИЯ      │  │  ШКОЛА   │ │    │
+│  │  │             │  │             │  │             │  │   КОДА   │ │    │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────┘ │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                          ЦЕНТРАЛЬНЫЙ РАЙОН                            │    │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │    │
+│  │  │   🎮 АРЕНА   │  │   🧩 КЛУБ    │  │   🎵 МЕДИА-  │  │   🎲     │ │    │
+│  │  │   РОБОТОВ    │  │  ЭРУДИТ     │  │    ЗАЛ      │  │ ИГРОВАЯ  │ │    │
+│  │  │  (Викторины) │  │  (Логика)   │  │ (Угадай ме- │  │ АРКАДА   │ │    │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────┘ │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                          ЮЖНЫЙ РАЙОН (СКРЫТЫЙ)                        │    │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │    │
+│  │  │   🤖 ТАЙНАЯ  │  │   ⚙️ ЗАБРО-  │  │   💎 СЕКРЕТ- │  │   👑     │ │    │
+│  │  │   ФАБРИКА    │  │   ШЕННЫЙ    │  │   НЫЙ ЦЕХ   │  │  БОСС    │ │    │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────┘ │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────────────┘
+                </pre>
+            </div>
+
+            <h3>Система прогрессии (10 рангов)</h3>
+            <div class="ranks-grid">
+                <div class="rank-card"><div class="rank-number">1</div><div class="rank-title">Механик-стажёр</div><div>0 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">2</div><div class="rank-title">Механик 3-го класса</div><div>30 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">3</div><div class="rank-title">Механик 2-го класса</div><div>70 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">4</div><div class="rank-title">Механик 1-го класса</div><div>120 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">5</div><div class="rank-title">Старший механик</div><div>200 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">6</div><div class="rank-title">Инженер</div><div>300 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">7</div><div class="rank-title">Старший инженер</div><div>420 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">8</div><div class="rank-title">Главный инженер</div><div>550 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">9</div><div class="rank-title">Мастер Меха-Сити</div><div>700 шестерёнок</div></div>
+                <div class="rank-card"><div class="rank-number">10</div><div class="rank-title">Хранитель знаний</div><div>800 шестерёнок</div></div>
+            </div>
+        </div>
+
+        <!-- 4. Активности планеты (вкладки) -->
+        <div id="activities" class="section">
+            <h2>4. 🎮 АКТИВНОСТИ ПЛАНЕТЫ (80+)</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('logic')">🧠 Логические (35)</button>
+                <button class="tab-btn" onclick="showTab('fun')">🎉 Развлекательные (25)</button>
+                <button class="tab-btn" onclick="showTab('secret')">🤫 Секреты (20)</button>
+            </div>
+
+            <div id="logic" class="tab-content active">
+                <div class="table-wrapper">
+                    <table>
+                        <tr><th>№</th><th>Активность (детская версия)</th><th>Активность (взрослая версия)</th><th>Сложность</th></tr>
+                        <tr><td>A1</td><td>Почини конвейер — Введение</td><td>Оптимизация конвейера</td><td>★☆☆</td></tr>
+                        <tr><td>A2</td><td>Почини конвейер — Продвинутый</td><td>Балансировка линии</td><td>★★☆</td></tr>
+                        <tr><td>A3</td><td>Почини конвейер — Эксперт</td><td>Теория ограничений</td><td>★★★</td></tr>
+                        <tr><td>A4</td><td>Соедини детали — Новичок</td><td>Сборка узлов</td><td>★☆☆</td></tr>
+                        <tr><td>A5</td><td>Соедини детали — Профи</td><td>Компоновка модулей</td><td>★★☆</td></tr>
+                        <tr><td>A6</td><td>Найди ошибку — Лёгкий</td><td>Визуальный контроль качества</td><td>★☆☆</td></tr>
+                        <tr><td>A7</td><td>Найди ошибку — Эксперт</td><td>Статистический выброс</td><td>★★★</td></tr>
+                        <tr><td>A8</td><td>Школа кода — Введение</td><td>Основы алгоритмизации</td><td>★★☆</td></tr>
+                        <tr><td>A9</td><td>Школа кода — Циклы</td><td>Итеративные процессы</td><td>★★★</td></tr>
+                        <tr><td>A10</td><td>Школа кода — Условия</td><td>Ветвление логики</td><td>★★★★</td></tr>
+                        <tr><td colspan="4" style="text-align:center; color:#00D2FF;">... и ещё 25 логических активностей</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="fun" class="tab-content">
+                <div class="table-wrapper">
+                    <table>
+                        <tr><th>№</th><th>Активность</th><th>Детский режим</th><th>Взрослый режим</th></tr>
+                        <tr><td>Б1</td><td>Викторина «Всё о роботах»</td><td>5–10 вопросов</td><td>20 вопросов + таймер</td></tr>
+                        <tr><td>Б2</td><td>Крестики-нолики</td><td>3×3 против AI</td><td>5×5 против экспертного AI</td></tr>
+                        <tr><td>Б3</td><td>Угадай мелодию</td><td>Мультфильмы</td><td>Фильмы + игры</td></tr>
+                        <tr><td>Б4</td><td>Мемори</td><td>8–12 карт</td><td>20 карт + таймер</td></tr>
+                        <tr><td colspan="4" style="text-align:center; color:#00D2FF;">... и ещё 21 развлекательная активность</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="secret" class="tab-content">
+                <div class="table-wrapper">
+                    <table>
+                        <tr><th>№</th><th>Секрет</th><th>Где найти</th><th>Награда</th></tr>
+                        <tr><td>В1</td><td>Секретный проход на заводе</td><td>Уровень A1-3</td><td>50 шестерёнок</td></tr>
+                        <tr><td>В2</td><td>Заброшенный цех</td><td>Между A4 и A5</td><td>Скин «Старый робот»</td></tr>
+                        <tr><td>В3</td><td>Код доступа к базе</td><td>Викторина Б1</td><td>100 шестерёнок</td></tr>
+                        <tr><td colspan="4" style="text-align:center; color:#00D2FF;">... и ещё 17 секретов по всей планете</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Персонажи -->
+        <div id="characters" class="section">
+            <h2>5. 🤖 ПЕРСОНАЖИ (27)</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showCharTab('friends')">😊 Друзья (10)</button>
+                <button class="tab-btn" onclick="showCharTab('enemies')">👾 Враги (8)</button>
+                <button class="tab-btn" onclick="showCharTab('neutral')">🗿 Нейтральные (6)</button>
+                <button class="tab-btn" onclick="showCharTab('bosses')">👑 Боссы (3)</button>
+            </div>
+
+            <div id="friends" class="char-tab active">
+                <div class="characters-grid">
+                    <div class="character-card"><div class="character-name">🤖 Клик</div><div class="character-role">Хранитель планеты</div><div>Даёт подсказки, обучает, награждает</div></div>
+                    <div class="character-card"><div class="character-name">⚙️ Шестерёнка</div><div class="character-role">Помощник</div><div>Собирает валюту</div></div>
+                    <div class="character-card"><div class="character-name">🔌 Проводок</div><div class="character-role">Навигатор</div><div>Показывает путь в лабиринтах</div></div>
+                    <div class="character-card"><div class="character-name">💾 Байт</div><div class="character-role">Учитель</div><div>Обучает программированию</div></div>
+                    <div class="character-card"><div class="character-name">📟 Схема</div><div class="character-role">Аналитик</div><div>Помогает сортировать</div></div>
+                </div>
+            </div>
+
+            <div id="enemies" class="char-tab">
+                <div class="characters-grid">
+                    <div class="character-card"><div class="character-name">🦠 Вирус</div><div class="character-role">Враг из Школы кода</div><div>Ломает код, нужно переписать</div></div>
+                    <div class="character-card"><div class="character-name">🔴 Коррозия</div><div class="character-role">Враг из Заброшенного цеха</div><div>Замедляет движение</div></div>
+                    <div class="character-card"><div class="character-name">📨 Спам</div><div class="character-role">Враг из викторин</div><div>Засыпает неправильными ответами</div></div>
+                    <div class="character-card"><div class="character-name">🐛 Баг</div><div class="character-role">Враг из лаборатории</div><div>Вносит ошибки в последовательности</div></div>
+                </div>
+            </div>
+
+            <div id="neutral" class="char-tab">
+                <div class="characters-grid">
+                    <div class="character-card"><div class="character-name">🛒 Торговец</div><div class="character-role">Центральная площадь</div><div>Продаёт скины и предметы</div></div>
+                    <div class="character-card"><div class="character-name">📚 Библиотекарь</div><div class="character-role">Архив</div><div>Даёт доступ к викторинам</div></div>
+                    <div class="character-card"><div class="character-name">🔧 Механик</div><div class="character-role">Гараж</div><div>Ремонтирует звездолёт</div></div>
+                </div>
+            </div>
+
+            <div id="bosses" class="char-tab">
+                <div class="characters-grid">
+                    <div class="character-card"><div class="character-name">👑 Король Вирусов</div><div class="character-role">Первый босс</div><div>Требует 50 шестерёнок</div></div>
+                    <div class="character-card"><div class="character-name">⚙️ Машина хаоса</div><div class="character-role">Второй босс</div><div>Требует 150 шестерёнок</div></div>
+                    <div class="character-card"><div class="character-name">❄️ Абсолют Ноль</div><div class="character-role">Финальный босс</div><div>Требует 800 шестерёнок</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Кооперативные уровни -->
+        <div id="coop" class="section">
+            <h2>6. 👥 КООПЕРАТИВНЫЕ УРОВНИ</h2>
+            
+            <h3>Типы кооперативных уровней</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Тип</th><th>Описание</th><th>Участники</th><th>Пример</th></tr>
+                    <tr><td>Синхронный</td><td>Реальный одновременный вход</td><td>2–4</td><td>«Два капитана»</td></tr>
+                    <tr><td>Асинхронный</td><td>Поочерёдные ходы</td><td>2</td><td>«Шифровальщики»</td></tr>
+                    <tr><td>С наставником</td><td>Взрослый помогает ребёнку</td><td>2</td><td>«Помощь зала»</td></tr>
+                    <tr><td>Семейный босс</td><td>Координация всей семьи</td><td>3–6</td><td>«Гигантский робот»</td></tr>
+                </table>
+            </div>
+
+            <details>
+                <summary>🎮 Пример: Кооперативный уровень «Два капитана»</summary>
+                <p style="margin-top: 15px;"><strong>Концепция:</strong> Звездолёт сломан. Один игрок управляет движением, второй — стрельбой.</p>
+                <p><strong>Роли:</strong> Пилот (ребёнок) — управляет движением; Стрелок (взрослый) — уничтожает астероиды.</p>
+                <p><strong>Механика:</strong> Действия синхронизируются через WebSocket в реальном времени.</p>
+            </details>
+        </div>
+
+        <!-- 7. Бизнес-модель -->
+        <div id="business" class="section">
+            <h2>7. 💰 БИЗНЕС-МОДЕЛЬ</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card"><h3>Free</h3><div class="pricing-price">0 ₽</div><ul class="pricing-features"><li>✓ 3 уровня</li><li>✓ 1 ребёнок</li><li>✗ Полная планета</li></ul></div>
+                <div class="pricing-card"><h3>Child</h3><div class="pricing-price">$4.99/мес</div><ul class="pricing-features"><li>✓ Полная планета</li><li>✓ 2 детей</li><li>✓ Все игры</li></ul></div>
+                <div class="pricing-card"><h3>Teen</h3><div class="pricing-price">$6.99/мес</div><ul class="pricing-features"><li>✓ Редактор уровней</li><li>✓ Турниры</li><li>✓ 3 детей</li></ul></div>
+                <div class="pricing-card"><h3>Adult</h3><div class="pricing-price">$8.99/мес</div><ul class="pricing-features"><li>✓ Стратегический режим</li><li>✓ Аналитика</li><li>✓ Продвинутые головоломки</li></ul></div>
+                <div class="pricing-card"><h3>Family</h3><div class="pricing-price">$14.99/мес</div><ul class="pricing-features"><li>✓ До 6 человек</li><li>✓ Общий прогресс</li><li>✓ Семейные турниры</li></ul></div>
+            </div>
+
+            <h3>Прогноз финансов (1-й год)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Показатель</th><th>Месяц 3</th><th>Месяц 6</th><th>Месяц 12</th></tr>
+                    <tr><td>Бесплатных пользователей</td><td>1,000</td><td>5,000</td><td>20,000</td></tr>
+                    <tr><td>Платящих подписчиков</td><td>100</td><td>700</td><td>3,000</td></tr>
+                    <tr><td>Ежемесячный доход</td><td>$550</td><td>$4,000</td><td>$18,000</td></tr>
+                    <tr><td>Годовой доход</td><td>—</td><td>—</td><td>$216,000</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 8. Юридические аспекты -->
+        <div id="legal" class="section">
+            <h2>8. ⚖️ ЮРИДИЧЕСКИЕ АСПЕКТЫ</h2>
+            
+            <h3>Возрастные категории и требования</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Возраст</th><th>Правовой статус</th><th>Требования</th></tr>
+                    <tr><td>0–13 лет</td><td>Ребёнок (COPPA, GDPR-K)</td><td>Требуется согласие родителей</td></tr>
+                    <tr><td>13–18 лет</td><td>Подросток</td><td>Согласие + ограничения на рекламу</td></tr>
+                    <tr><td>18+</td><td>Взрослый</td><td>Полное согласие</td></tr>
+                </table>
+            </div>
+
+            <details>
+                <summary>📋 Форма согласия родителей (образец)</summary>
+                <div style="background: rgba(10,14,39,0.5); padding: 20px; border-radius: 15px; margin-top: 15px;">
+                    <p><strong>СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ РЕБЁНКА</strong></p>
+                    <p>☑️ Сбор игрового прогресса<br>
+                    ☑️ Хранение имени и возраста<br>
+                    ☑️ Анонимную аналитику<br>
+                    ☐ Отправку образовательных рекомендаций<br>
+                    ☐ Участие в семейных турнирах</p>
+                    <p><strong>Мы НЕ собираем:</strong> Фотографии, геолокацию, номера телефонов</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 9. Техническая архитектура -->
+        <div id="tech" class="section">
+            <h2>9. 🔧 ТЕХНИЧЕСКАЯ АРХИТЕКТУРА</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Компонент</th><th>Технология</th><th>Версия</th></tr>
+                    <tr><td>Frontend</td><td>React</td><td>18.x</td></tr>
+                    <tr><td>Frontend сборка</td><td>Vite</td><td>5.x</td></tr>
+                    <tr><td>Backend</td><td>Node.js</td><td>18+</td></tr>
+                    <tr><td>Backend фреймворк</td><td>Express</td><td>4.x</td></tr>
+                    <tr><td>ORM</td><td>Prisma</td><td>5.22</td></tr>
+                    <tr><td>База данных</td><td>PostgreSQL</td><td>16</td></tr>
+                    <tr><td>WebSocket</td><td>Socket.io</td><td>4.x</td></tr>
+                    <tr><td>Платежи</td><td>Stripe / ЮKassa</td><td>—</td></tr>
+                </table>
+            </div>
+
+            <h3>Хостинг (Beget VPS)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Параметр</th><th>Минимально</th><th>Рекомендуется</th></tr>
+                    <tr><td>CPU</td><td>1 ядро</td><td>2 ядра</td></tr>
+                    <tr><td>RAM</td><td>2 GB</td><td>4 GB</td></tr>
+                    <tr><td>SSD</td><td>20 GB</td><td>40 GB</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 10. План развития -->
+        <div id="roadmap" class="section">
+            <h2>10. 📅 ПЛАН РАЗВИТИЯ (ROADMAP)</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Фаза</th><th>Период</th><th>Задачи</th><th>Статус</th></tr>
+                    <tr><td>Фаза 1</td><td>Месяцы 1–3</td><td>MVP (регистрация, вход, 3 игры)</td><td style="color:#00C48C;">✅ Завершена</td></tr>
+                    <tr><td>Фаза 2</td><td>Месяцы 4–6</td><td>Полная планета Меха-Сити (80+ активностей)</td><td style="color:#FFB347;">🔄 В разработке</td></tr>
+                    <tr><td>Фаза 3</td><td>Месяцы 7–8</td><td>Вторая планета (Аква-Дип)</td><td style="color:#B0B7D6;">📋 Запланирована</td></tr>
+                    <tr><td>Фаза 4</td><td>Месяцы 9–12</td><td>Мобильное приложение, турниры</td><td style="color:#B0B7D6;">📋 Запланирована</td></tr>
+                </table>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 35%;"></div>
+            </div>
+            <p style="text-align: center; color: #B0B7D6;">Общий прогресс проекта: 35%</p>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <p>© 2026 Космическая Академия (Kids Odyssey) | Все права защищены</p>
+            <p>Документация проекта версия 3.0 | Дата: 26 мая 2026 г.</p>
+        </div>
+    </div>
+
+    <!-- Кнопка наверх -->
+    <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <script>
+        // Показать вкладку активностей
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Показать вкладку персонажей
+        function showCharTab(tabId) {
+            document.querySelectorAll('.char-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Кнопка наверх
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        // Плавная прокрутка для якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
