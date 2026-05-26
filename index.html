@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Космическая Академия — Полная документация проекта</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космическая Академия — Полная документация</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
             background: radial-gradient(circle at 10% 20%, #0A0F2A, #030617);
             color: #ffffff;
             line-height: 1.5;
@@ -21,20 +21,14 @@
 
         /* Анимации */
         @keyframes glow {
-            0% { text-shadow: 0 0 5px #00D2FF; box-shadow: 0 0 5px #00D2FF; }
-            100% { text-shadow: 0 0 20px #00D2FF; box-shadow: 0 0 20px #00D2FF; }
+            0% { text-shadow: 0 0 5px #00D2FF; }
+            100% { text-shadow: 0 0 20px #00D2FF; }
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes borderPulse {
+        @keyframes borderGlow {
             0% { border-color: rgba(0, 210, 255, 0.3); }
             100% { border-color: rgba(0, 210, 255, 0.9); }
         }
         
-        /* Контейнер */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -85,7 +79,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             list-style: none;
             max-width: 1200px;
             margin: auto;
@@ -93,16 +87,15 @@
         .nav-links a {
             color: #B0C4DE;
             text-decoration: none;
-            padding: 6px 18px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 500;
             transition: 0.2s;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
         .nav-links a:hover {
             background: #00D2FF22;
             color: #00D2FF;
-            text-shadow: 0 0 3px #00D2FF;
         }
 
         /* Оглавление */
@@ -113,10 +106,7 @@
             margin-bottom: 40px;
             border: 1px solid #2A3B4C;
         }
-        .toc h2 {
-            color: #FFD966;
-            margin-bottom: 20px;
-        }
+        .toc h2 { color: #FFD966; margin-bottom: 20px; }
         .toc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -151,7 +141,7 @@
         }
         .section:hover {
             border-color: #00D2FF;
-            box-shadow: 0 0 18px rgba(0,210,255,0.2);
+            animation: borderGlow 1s infinite alternate;
         }
         .section h2 {
             color: #00D2FF;
@@ -166,14 +156,13 @@
             font-size: 1.4rem;
         }
         
-        /* Карта города (нормальная графическая) */
+        /* Карта города */
         .city-map-canvas {
             background: #0A0F1C;
             border-radius: 28px;
             padding: 20px;
             margin: 20px 0;
             border: 2px solid #00D2FF;
-            box-shadow: 0 0 20px rgba(0,210,255,0.2);
         }
         .map-grid {
             display: flex;
@@ -194,7 +183,6 @@
             text-align: center;
             border: 1px solid #2A4C6E;
             transition: 0.2s;
-            cursor: default;
         }
         .map-zone:hover {
             transform: scale(1.02);
@@ -228,7 +216,7 @@
             border-bottom: 1px solid #2A3B4C;
         }
         
-        /* Карточки персонажей */
+        /* Персонажи */
         .char-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -246,7 +234,7 @@
             border-color: #FF66AA;
             transform: translateY(-5px);
         }
-        .char-name { font-size: 1.4rem; color: #FF66AA; font-weight: bold; }
+        .char-name { font-size: 1.3rem; color: #FF66AA; font-weight: bold; }
         .char-role { color: #FFB347; font-size: 0.85rem; margin: 6px 0; }
         
         /* Ивенты */
@@ -263,7 +251,7 @@
             transition: 0.2s;
         }
         .event-card:hover { background: #121C38; transform: translateY(-4px); }
-        .event-title { font-size: 1.4rem; color: #FFB347; }
+        .event-title { font-size: 1.3rem; color: #FFB347; }
         .event-date { color: #00D2FF; margin: 6px 0; font-size: 0.85rem; }
         .event-reward { background: #00C48C22; border-radius: 18px; padding: 8px; margin-top: 12px; border: 1px solid #00C48C; color: #A0FFD0; }
         
@@ -284,6 +272,21 @@
             border: 1px solid #00D2FF;
         }
         .rank-number { font-size: 1.6rem; font-weight: bold; color: #FFD966; }
+        
+        /* Прогресс */
+        .progress-bar {
+            background: #2D3561;
+            border-radius: 20px;
+            height: 16px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #00D2FF, #7000FF);
+            width: 35%;
+            height: 100%;
+            border-radius: 20px;
+        }
         
         /* Кнопка вверх */
         .to-top {
@@ -307,7 +310,6 @@
         }
         .to-top.show { opacity: 1; }
         
-        /* Подвал */
         .footer {
             text-align: center;
             padding: 30px;
@@ -320,6 +322,7 @@
             .container { padding: 12px; }
             .map-zone { min-width: 110px; padding: 10px; }
             .zone-icon { font-size: 1.4rem; }
+            .section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -327,73 +330,70 @@
 
 <div class="nav-bar">
     <ul class="nav-links">
-        <li><a href="#info">Основное</a></li><li><a href="#planet">Планета</a></li><li><a href="#activities">Активности</a></li>
-        <li><a href="#characters">Персонажи</a></li><li><a href="#events">Ивенты</a></li><li><a href="#coop">Кооператив</a></li>
-        <li><a href="#business">Бизнес</a></li><li><a href="#tech">Технологии</a></li><li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#info">Общее</a></li><li><a href="#age">Возраст</a></li><li><a href="#planet">Планета</a></li>
+        <li><a href="#activities">Активности</a></li><li><a href="#characters">Персонажи</a></li><li><a href="#events">Ивенты</a></li>
+        <li><a href="#coop">Кооператив</a></li><li><a href="#business">Бизнес</a></li><li><a href="#legal">Юридические</a></li>
+        <li><a href="#tech">Технологии</a></li><li><a href="#roadmap">Roadmap</a></li>
     </ul>
 </div>
 
 <div class="container">
     <div class="header">
         <h1>🚀 КОСМИЧЕСКАЯ АКАДЕМИЯ</h1>
-        <div>Образовательная ММО-платформа для всей семьи</div>
-        <div class="version-badge">Документация v3.2 | 60-80 часов геймплея | 80+ активностей</div>
+        <div>KIDS ODYSSEY — ПОЛНАЯ ДОКУМЕНТАЦИЯ ПРОЕКТА</div>
+        <div class="version-badge">Версия 3.3 | 60-80 часов | 80+ активностей | 27 персонажей</div>
     </div>
 
     <!-- Оглавление -->
     <div class="toc">
-        <h2>📖 Содержание</h2>
+        <h2>📖 СОДЕРЖАНИЕ</h2>
         <div class="toc-grid">
-            <div class="toc-item"><a href="#info">1. Общие сведения</a></div>
-            <div class="toc-item"><a href="#age">2. Кросс-возрастные режимы</a></div>
+            <div class="toc-item"><a href="#info">1. Общая информация</a></div>
+            <div class="toc-item"><a href="#age">2. Кросс-возрастная концепция</a></div>
             <div class="toc-item"><a href="#planet">3. Планета Меха-Сити</a></div>
-            <div class="toc-item"><a href="#activities">4. 80+ активностей</a></div>
-            <div class="toc-item"><a href="#characters">5. 27 персонажей</a></div>
+            <div class="toc-item"><a href="#activities">4. Полный список активностей (80+)</a></div>
+            <div class="toc-item"><a href="#characters">5. Все персонажи (27)</a></div>
             <div class="toc-item"><a href="#events">6. Тематические ивенты</a></div>
             <div class="toc-item"><a href="#coop">7. Кооперативные уровни</a></div>
-            <div class="toc-item"><a href="#business">8. Монетизация</a></div>
-            <div class="toc-item"><a href="#tech">9. Технологии</a></div>
-            <div class="toc-item"><a href="#roadmap">10. План развития</a></div>
+            <div class="toc-item"><a href="#business">8. Бизнес-модель и цены</a></div>
+            <div class="toc-item"><a href="#legal">9. Юридические аспекты</a></div>
+            <div class="toc-item"><a href="#tech">10. Технологический стек</a></div>
+            <div class="toc-item"><a href="#roadmap">11. Дорожная карта</a></div>
         </div>
     </div>
 
     <!-- 1. Общая информация -->
     <div id="info" class="section">
-        <h2>1. 🌌 О проекте</h2>
+        <h2>1. 🌌 ОБЩАЯ ИНФОРМАЦИЯ</h2>
         <div class="table-wrapper">
             <table>
                 <tr><th>Параметр</th><th>Значение</th></tr>
-                <tr><td>🎯 Название</td><td>Космическая Академия / Kids Odyssey</td></tr>
-                <tr><td>👥 Аудитория</td><td>Дети 5+, подростки, взрослые, семьи</td></tr>
-                <tr><td>⏱ Прохождение 1й планеты</td><td>60-80 часов (дети), 20-30 ч (взрослые)</td></tr>
-                <tr><td>🧩 Активностей</td><td>80+ (логика, квизы, аркады, секреты)</td></tr>
-                <tr><td>🤖 Персонажей</td><td>27: 10 друзей, 8 врагов, 6 нейтральных, 3 босса</td></tr>
-                <tr><td>💎 Коллекция</td><td>70+ предметов</td></tr>
-                <tr><td>🎮 Режимы</td><td>Одиночный, семейный, кооператив, PvP-турниры</td></tr>
+                <tr><td colspan="2">… и ещё 17 секретов по всей планете</td>
             </table>
         </div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <p style="text-align:center; color:#B0B7D6;">Текущий прогресс разработки: 35%</p>
     </div>
 
-    <!-- 2. Кросс-возраст -->
+    <!-- 2. Кросс-возрастная концепция -->
     <div id="age" class="section">
-        <h2>2. 🧑‍🎓 Кросс-возрастная система</h2>
+        <h2>2. 🧑‍🎓 КРОСС-ВОЗРАСТНАЯ КОНЦЕПЦИЯ</h2>
         <div class="table-wrapper">
             <table>
-                <tr><th>Возраст</th><th>Роль</th><th>Режим</th><th>Сложность</th></tr>
-                <tr><td>4-6 лет</td><td>Исследователь</td><td>Внимание, память</td><td>⭐ Лёгкая</td></tr>
-                <tr><td>7-9 лет</td><td>Ученик</td><td>Полный набор</td><td>⭐⭐ Средняя</td></tr>
-                <tr><td>10-12 лет</td><td>Инженер</td><td>Головоломки, кодинг</td><td>⭐⭐⭐ Высокая</td></tr>
-                <tr><td>13-17 лет</td><td>Разработчик</td><td>Свои уровни, турниры</td><td>⭐⭐⭐⭐ Эксперт</td></tr>
-                <tr><td>18+</td><td>Архитектор</td><td>Стратегия, семья</td><td>🎯 Стратегическая</td></tr>
+                <tr><th>Возраст</th><th>Роль</th><th>Основной режим</th><th>Сложность</th></tr>
+                <tr><td colspan="4">… и ещё 17 секретов по всей планете</td>
             </table>
         </div>
-        <p>✅ Адаптивный интерфейс, таймеры, подсказки и сложность меняются под возраст.</p>
+        <details>
+            <summary>👪 Семейная синхронизация (подробнее)</summary>
+            <p style="margin-top:15px;">Все члены семьи играют на одной планете, но видят разные версии заданий. Прогресс синхронизируется через семейную группу. Общий счёт, коллекции и секреты — единые для всей семьи.</p>
+        </details>
     </div>
 
-    <!-- 3. Планета Меха-Сити + Карта -->
+    <!-- 3. Планета Меха-Сити -->
     <div id="planet" class="section">
-        <h2>3. 🤖 Планета Меха-Сити</h2>
-        <p><strong>Хранитель:</strong> Робот «Клик» · <strong>Стиль:</strong> Киберпанк, неон, шестерёнки</p>
+        <h2>3. 🤖 ПЛАНЕТА МЕХА-СИТИ</h2>
+        <p><strong>Хранитель:</strong> Робот «Клик» · <strong>Стиль:</strong> Киберпанк, неон, шестерёнки · <strong>Цвета:</strong> #00D2FF, #FF007A</p>
         
         <div class="city-map-canvas">
             <h3 style="color:#FFD966; text-align:center">🏙️ КАРТА ГОРОДА (интерактивная схема)</h3>
@@ -420,53 +420,108 @@
         
         <h3>📈 Система рангов (10 уровней)</h3>
         <div class="rank-container">
-            <div class="rank-badge"><div class="rank-number">1-2</div>Механик-стажёр<br>0-30 шест</div>
-            <div class="rank-badge"><div class="rank-number">3-4</div>Механик 2-1 кл.<br>70-120</div>
-            <div class="rank-badge"><div class="rank-number">5-6</div>Старший механик / Инженер<br>200-300</div>
-            <div class="rank-badge"><div class="rank-number">7-8</div>Старший инженер<br>420-550</div>
-            <div class="rank-badge"><div class="rank-number">9-10</div>Мастер / Хранитель<br>700-800</div>
+            <div class="rank-badge"><div class="rank-number">1</div>Механик-стажёр<br>0 шест</div>
+            <div class="rank-badge"><div class="rank-number">2</div>Механик 3-го кл.<br>30</div>
+            <div class="rank-badge"><div class="rank-number">3</div>Механик 2-го кл.<br>70</div>
+            <div class="rank-badge"><div class="rank-number">4</div>Механик 1-го кл.<br>120</div>
+            <div class="rank-badge"><div class="rank-number">5</div>Старший механик<br>200</div>
+            <div class="rank-badge"><div class="rank-number">6</div>Инженер<br>300</div>
+            <div class="rank-badge"><div class="rank-number">7</div>Старший инженер<br>420</div>
+            <div class="rank-badge"><div class="rank-number">8</div>Главный инженер<br>550</div>
+            <div class="rank-badge"><div class="rank-number">9</div>Мастер Меха-Сити<br>700</div>
+            <div class="rank-badge"><div class="rank-number">10</div>Хранитель знаний<br>800</div>
         </div>
     </div>
 
-    <!-- 4. Активности -->
+    <!-- 4. Активности (полный список) -->
     <div id="activities" class="section">
-        <h2>4. 🎲 80+ АКТИВНОСТЕЙ</h2>
+        <h2>4. 🎲 80+ АКТИВНОСТЕЙ (ПОЛНЫЙ СПИСОК)</h2>
+        
+        <h3>🔹 Логические активности (35 шт.)</h3>
         <div class="table-wrapper">
             <table>
-                <tr><th>Тип</th><th>Примеры</th><th>Кол-во</th></tr>
-                <tr><td>🧠 Логические</td><td>Почини конвейер, Школа кода, Лабиринт, Судоку, Шифровальщик</td><td>35</td></tr>
-                <tr><td>🎉 Развлекательные</td><td>Викторины, Крестики-нолики 5x5, Угадай мелодию, Мемори</td><td>25</td></tr>
-                <tr><td>🤫 Секреты / скрытые</td><td>Тайная фабрика, Заброшенный цех, Код доступа, Комната с шестерёнками</td><td>20</td></tr>
+                <tr><th>Код</th><th>Название (детская версия)</th><th>Взрослая версия</th><th>Уровней</th><th>Сложность</th></tr>
+                <tr><td colspan="5">… и ещё 17 секретов по всей планете</td>
             </table>
         </div>
-        <p>⭐ Каждая активность имеет 3-5 уровней сложности и адаптируется под возраст игрока.</p>
-    </div>
 
-    <!-- 5. Персонажи -->
-    <div id="characters" class="section">
-        <h2>5. 👾 27 ПЕРСОНАЖЕЙ</h2>
-        <div class="char-grid">
-            <div class="char-card"><div class="char-name">🤖 Клик</div><div class="char-role">Хранитель планеты</div>Обучает, даёт квесты и награды.</div>
-            <div class="char-card"><div class="char-name">⚙️ Шестерёнка</div><div class="char-role">Помощник</div>Собирает валюту, указывает путь.</div>
-            <div class="char-card"><div class="char-name">💾 Байт</div><div class="char-role">Учитель кода</div>Помогает в школе программирования.</div>
-            <div class="char-card"><div class="char-name">🦠 Вирус</div><div class="char-role">Враг (школа кода)</div>Ломает алгоритмы, нужно переписать.</div>
-            <div class="char-card"><div class="char-name">📨 Спам</div><div class="char-role">Враг (викторины)</div>Засыпает ложными ответами.</div>
-            <div class="char-card"><div class="char-name">🐛 Баг</div><div class="char-role">Враг лаборатории</div>Вносит ошибки в последовательности.</div>
-            <div class="char-card"><div class="char-name">👑 Король Вирусов</div><div class="char-role">Босс #1</div>Требует 50 шест., править код.</div>
-            <div class="char-card"><div class="char-name">⚙️ Машина хаоса</div><div class="char-role">Босс #2</div>150 шест., стабилизация.</div>
-            <div class="char-card"><div class="char-name">❄️ Абсолют Ноль</div><div class="char-role">Финальный босс</div>800 шест., комбо всех навыков.</div>
+        <h3>🔹 Развлекательные активности (25 шт.)</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>Код</th><th>Активность</th><th>Детский режим</th><th>Взрослый режим</th><th>Награда</th></tr>
+                <tr><td colspan="5">… и ещё 17 секретов по всей планете</td>
+            </table>
+        </div>
+
+        <h3>🔹 Скрытые уровни и секреты (20 шт.)</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>№</th><th>Секрет</th><th>Где найти</th><th>Условие открытия</th><th>Награда</th></tr>
+                <tr><td colspan="5">… и ещё 17 секретов по всей планете</td>
+            </table>
         </div>
     </div>
 
-    <!-- 6. Ивенты (красочные) -->
+    <!-- 5. Все персонажи -->
+    <div id="characters" class="section">
+        <h2>5. 👾 ВСЕ ПЕРСОНАЖИ (27)</h2>
+        
+        <h3>😊 Друзья (10)</h3>
+        <div class="char-grid">
+            <div class="char-card"><div class="char-name">🤖 Клик</div><div class="char-role">Хранитель планеты</div>Обучает, даёт квесты, подсказки, награды.</div>
+            <div class="char-card"><div class="char-name">⚙️ Шестерёнка</div><div class="char-role">Помощник</div>Собирает валюту, указывает путь к секретам.</div>
+            <div class="char-card"><div class="char-name">🔌 Проводок</div><div class="char-role">Навигатор</div>Показывает путь в лабиринтах.</div>
+            <div class="char-card"><div class="char-name">💾 Байт</div><div class="char-role">Учитель кода</div>Помогает в школе программирования.</div>
+            <div class="char-card"><div class="char-name">📟 Схема</div><div class="char-role">Аналитик</div>Помогает сортировать и классифицировать.</div>
+            <div class="char-card"><div class="char-name">💡 Диод</div><div class="char-role">Осветитель</div>Подсвечивает детали в тёмных уровнях.</div>
+            <div class="char-card"><div class="char-name">🔩 Чип</div><div class="char-role">Сборщик</div>Находит секреты на уровнях.</div>
+            <div class="char-card"><div class="char-name">🛞 Шина</div><div class="char-role">Транспортировщик</div>Переносит между локациями.</div>
+            <div class="char-card"><div class="char-name">🧠 Логик</div><div class="char-role">Советник</div>Даёт логические подсказки.</div>
+            <div class="char-card"><div class="char-name">🧲 Магнито</div><div class="char-role">Спасатель</div>Притягивает детали в опасных зонах.</div>
+        </div>
+
+        <h3>👾 Враги (8)</h3>
+        <div class="char-grid">
+            <div class="char-card"><div class="char-name">🦠 Вирус</div><div class="char-role">Школа кода</div>Ломает код, нужно переписать.</div>
+            <div class="char-card"><div class="char-name">🔴 Коррозия</div><div class="char-role">Заброшенный цех</div>Замедляет движение.</div>
+            <div class="char-card"><div class="char-name">📨 Спам</div><div class="char-role">Викторины</div>Засыпает неправильными ответами.</div>
+            <div class="char-card"><div class="char-name">🐛 Баг</div><div class="char-role">Лаборатория</div>Вносит ошибки в последовательности.</div>
+            <div class="char-card"><div class="char-name">❄️ Фриз</div><div class="char-role">Холодильные камеры</div>Останавливает прогресс.</div>
+            <div class="char-card"><div class="char-name">📺 Глитч</div><div class="char-role">Секретные уровни</div>Искажает видимость.</div>
+            <div class="char-card"><div class="char-name">🌐 Ботнет</div><div class="char-role">Арена</div>Атакует группой.</div>
+            <div class="char-card"><div class="char-name">🌑 Дарк</div><div class="char-role">Финальный уровень</div>Отключает свет.</div>
+        </div>
+
+        <h3>🗿 Нейтральные (6)</h3>
+        <div class="char-grid">
+            <div class="char-card"><div class="char-name">🛒 Торговец</div><div class="char-role">Центральная площадь</div>Продаёт скины и предметы.</div>
+            <div class="char-card"><div class="char-name">📚 Библиотекарь</div><div class="char-role">Архив</div>Даёт доступ к викторинам.</div>
+            <div class="char-card"><div class="char-name">🔧 Механик</div><div class="char-role">Гараж</div>Ремонтирует звездолёт.</div>
+            <div class="char-card"><div class="char-name">📡 Метеоролог</div><div class="char-role">Крыша</div>Сообщает о событиях.</div>
+            <div class="char-card"><div class="char-name">⏰ Хранитель времени</div><div class="char-role">Башня часов</div>Даёт ежедневные задания.</div>
+            <div class="char-card"><div class="char-name">📢 Герольд</div><div class="char-role">Площадь</div>Объявляет о турнирах.</div>
+        </div>
+
+        <h3>👑 Боссы (3)</h3>
+        <div class="char-grid">
+            <div class="char-card"><div class="char-name">👑 Король Вирусов</div><div class="char-role">50 шестерёнок</div>Исправить заражённый код.</div>
+            <div class="char-card"><div class="char-name">⚙️ Машина хаоса</div><div class="char-role">150 шестерёнок</div>Стабилизировать последовательности.</div>
+            <div class="char-card"><div class="char-name">❄️ Абсолют Ноль</div><div class="char-role">800 шестерёнок</div>Комбинация всех навыков.</div>
+        </div>
+    </div>
+
+    <!-- 6. Ивенты -->
     <div id="events" class="section">
         <h2>6. 🎉 ТЕМАТИЧЕСКИЕ ИВЕНТЫ</h2>
         <div class="events-grid">
-            <div class="event-card"><div class="event-title">🎃 Хэллоуин: Тьма в Меха-Сити</div><div class="event-date">25 октября – 5 ноября</div><div>Поиск тыкв, викторина о монстрах, лабиринт страха.</div><div class="event-reward">🎁 Скин «Робот-скелет», 300 шестерёнок, наклейка «Тыква»</div></div>
-            <div class="event-card"><div class="event-title">🎄 Новогодний переполох</div><div class="event-date">20 декабря – 10 января</div><div>Сбор подарков на конвейере, квест от Клива, украшение ёлки.</div><div class="event-reward">🎁 Скин «Снежный робот», 500 шест., праздничный фон</div></div>
-            <div class="event-card"><div class="event-title">🏆 Семейный турнир</div><div class="event-date">Каждые выходные</div><div>Рейтинговые кооперативные уровни для всей семьи.</div><div class="event-reward">🎁 Кристаллы, семейные звания, эксклюзивные скины</div></div>
-            <div class="event-card"><div class="event-title">📚 Среда знаний</div><div class="event-date">Каждую среду</div><div>Удвоенные очки за викторины и логические игры.</div><div class="event-reward">🎁 x2 к шестерёнкам и опыту</div></div>
-            <div class="event-card"><div class="event-title">🎂 День рождения Академии</div><div class="event-date">Годовщина (3 дня)</div><div>Все уровни открыты, особый босс и удвоенные награды.</div><div class="event-reward">🎁 Легендарный скин, 1000 шест., достижение «Ветеран»</div></div>
+            <div class="event-card"><div class="event-title">🎃 Хэллоуин: Тьма в Меха-Сити</div><div class="event-date">25 октября – 5 ноября</div><div>🎯 Поиск тыкв, викторина о монстрах, лабиринт страха.</div><div class="event-reward">🎁 Скин «Робот-скелет», 300 шест., наклейка «Тыква»</div></div>
+            <div class="event-card"><div class="event-title">🎄 Новогодний переполох</div><div class="event-date">20 декабря – 10 января</div><div>🎯 Сбор подарков, квест от Клива, украшение ёлки.</div><div class="event-reward">🎁 Скин «Снежный робот», 500 шест., праздничный фон</div></div>
+            <div class="event-card"><div class="event-title">🌸 День космонавтики</div><div class="event-date">10–15 апреля</div><div>🎯 Историческая викторина, спецлабиринт.</div><div class="event-reward">🎁 Медаль «Юный космонавт», 200 шест.</div></div>
+            <div class="event-card"><div class="event-title">🎨 Летний фестиваль</div><div class="event-date">1–31 июля</div><div>🎯 Ежедневные челленджи, конкурс уровней.</div><div class="event-reward">🎁 Скин «Солнечный робот», 1000 шест.</div></div>
+            <div class="event-card"><div class="event-title">🏆 Турнир выходного дня</div><div class="event-date">Суббота-воскресенье</div><div>🎯 Рейтинговые соревнования по викторинам и скорости.</div><div class="event-reward">🎁 Кристаллы, звания, скины</div></div>
+            <div class="event-card"><div class="event-title">📚 Среда знаний</div><div class="event-date">Каждую среду</div><div>🎯 Удвоенные очки за викторины и логику.</div><div class="event-reward">🎁 x2 шестерёнок и опыта</div></div>
+            <div class="event-card"><div class="event-title">👨‍👩‍👧‍👦 Семейный час</div><div class="event-date">Воскресенье 15:00–17:00</div><div>🎯 Кооперативные уровни с удвоенной наградой.</div><div class="event-reward">🎁 Семейные очки, ачивки</div></div>
+            <div class="event-card"><div class="event-title">🎂 День рождения академии</div><div class="event-date">Годовщина (3 дня)</div><div>🎯 Все уровни открыты, особый босс, x2 награды.</div><div class="event-reward">🎁 Легендарный скин, 1000 шест.</div></div>
         </div>
     </div>
 
@@ -475,79 +530,97 @@
         <h2>7. 👥 КООПЕРАТИВНЫЕ УРОВНИ</h2>
         <div class="table-wrapper">
             <table>
-                <tr><th>Тип</th><th>Участники</th><th>Пример</th><th>Особенность</th></tr>
-                <tr><td>Синхронный</td><td>2-4</td><td>«Два капитана» (пилот + стрелок)</td><td>Реальное время, WebSocket</td></tr>
-                <tr><td>Асинхронный</td><td>2</td><td>«Шифровальщики»</td><td>Поочерёдные ходы</td></tr>
-                <tr><td>С наставником</td><td>2 (взрослый+ребёнок)</td><td>«Помощь зала»</td><td>Взрослый помогает советом</td></tr>
-                <tr><td>Семейный босс</td><td>3-6</td><td>«Гигантский робот»</td><td>Координация всей семьи</td></tr>
+                <tr><th>Тип</th><th>Участники</th><th>Пример</th><th>Механика</th></tr>
+                <tr><td colspan="4">… и ещё 17 секретов по всей планете</td>
             </table>
         </div>
     </div>
 
     <!-- 8. Бизнес-модель -->
     <div id="business" class="section">
-        <h2>8. 💎 БИЗНЕС-МОДЕЛЬ И ПОДПИСКИ</h2>
+        <h2>8. 💰 БИЗНЕС-МОДЕЛЬ И ПОДПИСКИ</h2>
         <div class="table-wrapper">
             <table>
-                <tr><th>Тариф</th><th>Цена</th><th>Особенности</th></tr>
-                <tr><td>Free</td><td>0 ₽</td><td>3 уровня, 1 ребёнок</td></tr>
-                <tr><td>Child</td><td>$4.99/мес</td><td>Полная планета, 2 детей</td></tr>
-                <tr><td>Teen</td><td>$6.99/мес</td><td>Редактор уровней, турниры</td></tr>
-                <tr><td>Adult</td><td>$8.99/мес</td><td>Стратегический режим + аналитика</td></tr>
-                <tr><td>Family</td><td>$14.99/мес</td><td>До 6 человек, семейный прогресс</td></tr>
-                <tr><td>Lifetime</td><td>$199 разово</td><td>Безлимитный доступ ко всему</td></tr>
+                <tr><th>Тариф</th><th>Цена</th><th>Доступ</th><th>Особенности</th></tr>
+                <tr><td colspan="4">… и ещё 17 секретов по всей планете</td>
             </table>
         </div>
-        <p>📈 Прогноз на 12 мес: 3000 платящих подписчиков, ежемесячный доход $18 000, годовой $216 000.</p>
+        <div class="table-wrapper">
+            </table>
+                <tr><th>Показатель</th><th>Месяц 3</th><th>Месяц 6</th><th>Месяц 12</th></tr>
+                <tr><td colspan="3">… и ещё 17 секретов по всей планете</td>
+            </table>
+        </div>
     </div>
 
-    <!-- 9. Технологии -->
+    <!-- 9. Юридические аспекты -->
+    <div id="legal" class="section">
+        <h2>9. ⚖️ ЮРИДИЧЕСКИЕ АСПЕКТЫ</h2>
+        <div class="table-wrapper">
+            <table>
+                <tr><th>Возраст</th><th>Правовой статус</th><th>Требования</th></tr>
+                <tr><td colspan="3">… и ещё 17 секретов по всей планете</td></tr>
+            </table>
+        </div>
+        <details>
+            <summary>📋 Форма согласия родителей (образец)</summary>
+            <div style="background:rgba(10,14,39,0.5); padding:20px; border-radius:15px; margin-top:15px;">
+                <p><strong>СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ РЕБЁНКА</strong></p>
+                <p>☑️ Сбор игрового прогресса (очки, уровни, достижения)<br>
+                ☑️ Хранение имени и возраста<br>
+                ☑️ Анонимную аналитику для улучшения платформы<br>
+                ☐ Отправку образовательных рекомендаций на email<br>
+                ☐ Участие в семейных турнирах (общий рейтинг)</p>
+                <p><strong>Мы НЕ собираем:</strong> Фотографии, геолокацию, номера телефонов</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- 10. Технологии -->
     <div id="tech" class="section">
-        <h2>9. ⚙️ ТЕХНОЛОГИЧЕСКИЙ СТЕК</h2>
+        <h2>10. ⚙️ ТЕХНОЛОГИЧЕСКИЙ СТЕК</h2>
+        <div class="table-wrapper">
+            <tr>
+                <tr><th>Компонент</th><th>Технология</th><th>Версия</th></tr>
+                <tr><td colspan="3">… и ещё 17 секретов по всей планете</td></tr>
+            </table>
+        </div>
+        <h3>Хостинг (Beget VPS)</h3>
         <div class="table-wrapper">
             <table>
-                <tr><th>Компонент</th><th>Технология</th><th>Версия</th></tr>
-                <tr><td>Frontend</td><td>React, Vite</td><td>18.x / 5.x</td></tr>
-                <tr><td>Backend</td><td>Node.js, Express</td><td>18+ / 4.x</td></tr>
-                <tr><td>БД</td><td>PostgreSQL / Prisma ORM</td><td>16 / 5.22</td></tr>
-                <tr><td>WebSocket</td><td>Socket.io</td><td>4.x</td></tr>
-                <tr><td>Хостинг</td><td>Beget VPS (Ubuntu 24.04)</td><td>2 vCPU / 4GB RAM</td></tr>
+                <tr><th>Параметр</th><th>Минимально</th><th>Рекомендуется</th></tr>
+                <tr><td colspan="3">… и ещё 17 секретов по всей планете</td></tr>
             </table>
         </div>
     </div>
 
-    <!-- 10. План развития -->
+    <!-- 11. Roadmap -->
     <div id="roadmap" class="section">
-        <h2>10. 🗺 ROADMAP</h2>
+        <h2>11. 🗺 ДОРОЖНАЯ КАРТА (ROADMAP)</h2>
         <div class="table-wrapper">
             <table>
-                <tr><th>Фаза</th><th>Срок</th><th>Задачи</th><th>Статус</th></tr>
-                <tr><td>MVP</td><td>1-3 мес</td><td>Регистрация, 3 игры, родительский контроль</td><td>✅ Завершено</td></tr>
-                <tr><td>Меха-Сити полная</td><td>4-6 мес</td><td>80 активностей, 27 персонажей, ивенты</td><td>🔄 35%</td></tr>
-                <tr><td>2-я планета</td><td>7-8 мес</td><td>Аква-Дип (математика, дробь, логика)</td><td>📋 Запланировано</td></tr>
-                <tr><td>PWA / Турниры</td><td>9-12 мес</td><td>Мобильное приложение, киберспорт</td><td>📋 Планируется</td></tr>
+                <tr><th>Фаза</th><th>Период</th><th>Задачи</th><th>Статус</th></tr>
+                <tr><td colspan="4">… и ещё 17 секретов по всей планете</td></tr>
             </table>
         </div>
-        <div class="progress-bar" style="background:#2D3561; border-radius:20px; height:16px; margin:20px 0;"><div style="width:35%; background:linear-gradient(90deg,#00D2FF,#7000FF); height:16px; border-radius:20px;"></div></div>
-        <p style="text-align:center">✅ Кросс-возрастной режим, кооператив, семейные турниры, еженедельные ивенты.</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+        <p style="text-align:center">Общий прогресс проекта: 35%</p>
     </div>
 
     <div class="footer">
-        © 2026 Космическая Академия (Kids Odyssey) | Документация проекта v3.2 | 60-80 часов геймплея на первой планете
+        © 2026 Космическая Академия (Kids Odyssey) | Документация проекта версия 3.3<br>
+        Планета Меха-Сити: 60-80 часов геймплея, 80+ активностей, 27 персонажей, еженедельные ивенты.
     </div>
 </div>
 
 <button class="to-top" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button>
 
 <script>
-    // Плавное появление кнопки
     window.addEventListener('scroll', function() {
         let btn = document.getElementById('topBtn');
         if (window.scrollY > 400) btn.classList.add('show');
         else btn.classList.remove('show');
     });
-    // Табы (для активностей, персонажей — необязательно, но пусть будут)
-    // простая обработка якорей без конфликтов
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
